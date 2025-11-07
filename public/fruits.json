@@ -1,0 +1,17 @@
+[
+  { "id": 1, "name": "Beetroot", "category": "Vegetable", "price": 50, "offerPrice": 40, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/beatroot.jpg" },
+  { "id": 2, "name": "Brinjal", "category": "Vegetable", "price": 60, "offerPrice": 45, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/brinjal.jpg" },
+  { "id": 3, "name": "Broccoli", "category": "Vegetable", "price": 120, "offerPrice": 100, "rating": 4.5, "quantity": "500 g", "inStock": true, "image": "/images/vegtable/brocoli.jpg" },
+  { "id": 4, "name": "Cabbage", "category": "Vegetable", "price": 40, "offerPrice": 30, "rating": 4, "quantity": "1 pc", "inStock": true, "image": "/images/vegtable/cabbage.jpg" },
+  { "id": 5, "name": "Capsicum", "category": "Vegetable", "price": 80, "offerPrice": 65, "rating": 4, "quantity": "500 g", "inStock": true, "image": "/images/vegtable/capcicum.jpg" },
+  { "id": 6, "name": "Carrot", "category": "Vegetable", "price": 60, "offerPrice": 50, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/carret.jpg" },
+  { "id": 7, "name": "Cauliflower", "category": "Vegetable", "price": 70, "offerPrice": 55, "rating": 4, "quantity": "1 pc", "inStock": true, "image": "/images/vegtable/cauliflower.jpg" },
+  { "id": 8, "name": "Cucumber", "category": "Vegetable", "price": 40, "offerPrice": 30, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/cucumbar.jpg" },
+  { "id": 9, "name": "Garlic", "category": "Vegetable", "price": 200, "offerPrice": 160, "rating": 4.5, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/garlic.webp" },
+  { "id": 10, "name": "Okra (Ladies Finger)", "category": "Vegetable", "price": 60, "offerPrice": 45, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/okra.jpg" },
+  { "id": 11, "name": "Onion", "category": "Vegetable", "price": 40, "offerPrice": 35, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/onion.webp" },
+  { "id": 12, "name": "Potato", "category": "Vegetable", "price": 35, "offerPrice": 30, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/potato.jpg" },
+  { "id": 13, "name": "Pumpkin", "category": "Vegetable", "price": 50, "offerPrice": 40, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/pumbkin.jpg" },
+  { "id": 14, "name": "Spinach", "category": "Vegetable", "price": 30, "offerPrice": 25, "rating": 4, "quantity": "1 bunch", "inStock": true, "image": "/images/vegtable/spinach.jpg" },
+  { "id": 15, "name": "Tomato", "category": "Vegetable", "price": 40, "offerPrice": 30, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/vegtable/tomato.jpg" }
+]

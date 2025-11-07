@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* 🌿 Font imports */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap");
+
+/* 🌍 Apply a clean base font */
+/* 🌍 Apply font globally */
+body {
+  @apply bg-white text-gray-800;
+  font-family: "Nunito", sans-serif;
+}
+
+/* ✨ For specific headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🌿 Smooth scroll & transition */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🧭 Hide scrollbar globally when needed */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ✨ Optional: animate navbar shadow on scroll */
+.sticky-nav {
+  @apply fixed top-0 left-0 w-full z-50 bg-white transition-all duration-300 shadow-md;
+}

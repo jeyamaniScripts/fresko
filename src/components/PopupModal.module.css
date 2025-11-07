@@ -1,0 +1,141 @@
+/* Overlay background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Popup box */
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  width: 90%;
+  max-width: 460px;
+}
+
+/* Icon circle */
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #fee2e2;
+  border-radius: 9999px;
+}
+
+/* Title and text */
+.modalTitle {
+  color: #111827;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.modalText {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Buttons */
+.modalButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  width: 100%;
+}
+
+.cancelBtn,
+.confirmBtn {
+  flex: 1;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancelBtn {
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: #4b5563;
+}
+
+.cancelBtn:hover {
+  background-color: #f3f4f6;
+}
+
+.confirmBtn {
+  background-color: #dc2626;
+  color: white;
+}
+
+.confirmBtn:hover {
+  background-color: #b91c1c;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Close button */
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: #9ca3af; /* gray-400 */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: #374151; /* gray-700 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

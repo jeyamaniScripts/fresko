@@ -1,0 +1,17 @@
+[
+  { "id": 101, "name": "Apple", "category": "Fruit", "price": 120, "offerPrice": 95, "rating": 5, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/apple.jpg" },
+  { "id": 102, "name": "Banana", "category": "Fruit", "price": 60, "offerPrice": 45, "rating": 4, "quantity": "1 dozen", "inStock": true, "image": "/images/fruits/banana.jpg" },
+  { "id": 103, "name": "Blueberry", "category": "Fruit", "price": 200, "offerPrice": 160, "rating": 4.5, "quantity": "500 g", "inStock": true, "image": "/images/fruits/blueberry.jpg" },
+  { "id": 104, "name": "Cherry", "category": "Fruit", "price": 180, "offerPrice": 150, "rating": 4, "quantity": "500 g", "inStock": true, "image": "/images/fruits/cherry.jpg" },
+  { "id": 105, "name": "Grapes", "category": "Fruit", "price": 90, "offerPrice": 70, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/grapes.jpg" },
+  { "id": 106, "name": "Guava", "category": "Fruit", "price": 80, "offerPrice": 65, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/guava.jpg" },
+  { "id": 107, "name": "Kiwi", "category": "Fruit", "price": 150, "offerPrice": 120, "rating": 4.5, "quantity": "500 g", "inStock": true, "image": "/images/fruits/kiwi.jpg" },
+  { "id": 108, "name": "Mango", "category": "Fruit", "price": 100, "offerPrice": 80, "rating": 5, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/mango.jpg" },
+  { "id": 109, "name": "Orange", "category": "Fruit", "price": 90, "offerPrice": 70, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/orange.jpg" },
+  { "id": 110, "name": "Papaya", "category": "Fruit", "price": 80, "offerPrice": 65, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/papaya.jpg" },
+  { "id": 111, "name": "Pear", "category": "Fruit", "price": 100, "offerPrice": 85, "rating": 4, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/pear.jpg" },
+  { "id": 112, "name": "Pineapple", "category": "Fruit", "price": 110, "offerPrice": 90, "rating": 4.5, "quantity": "1 pc", "inStock": true, "image": "/images/fruits/pineapple.jpg" },
+  { "id": 113, "name": "Pomegranate", "category": "Fruit", "price": 150, "offerPrice": 120, "rating": 5, "quantity": "1 kg", "inStock": true, "image": "/images/fruits/pomegranate.jpg" },
+  { "id": 114, "name": "Strawberry", "category": "Fruit", "price": 180, "offerPrice": 150, "rating": 4.5, "quantity": "500 g", "inStock": true, "image": "/images/fruits/strawberry.jpg" },
+  { "id": 115, "name": "Watermelon", "category": "Fruit", "price": 60, "offerPrice": 45, "rating": 4, "quantity": "1 pc", "inStock": true, "image": "/images/fruits/watermelon.jpg" }
+]

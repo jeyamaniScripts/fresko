@@ -1,0 +1,45 @@
+.bannerWrapper {
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: white;
+  background: linear-gradient(
+    to right,
+    #a3e635,   /* lime-400 */
+    #10b981,   /* emerald-500 */
+    #14b8a6    /* teal-500 */
+  );
+}
+
+.bannerContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .bannerContent {
+    flex-direction: row;
+  }
+}
+
+.divider {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .divider {
+    display: inline;
+  }
+}
+
+.couponCode {
+  font-weight: 600;
+  color: #fde047; /* yellow-300 */
+}
