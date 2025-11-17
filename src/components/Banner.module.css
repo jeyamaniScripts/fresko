@@ -1,15 +1,10 @@
 .bannerWrapper {
   width: 100%;
-  padding: 10px 0;
+  padding: 6px 0; /* ⬅ reduced from 10px */
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* ⬅ slightly smaller text */
   color: white;
-  background: linear-gradient(
-    to right,
-    #a3e635,   /* lime-400 */
-    #10b981,   /* emerald-500 */
-    #14b8a6    /* teal-500 */
-  );
+  background: linear-gradient(to right, #a3e635, #10b981, #14b8a6);
 }
 
 .bannerContent {
@@ -19,13 +14,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+
+  gap: 0.4rem; /* ⬅ reduced from 1rem */
   text-align: center;
 }
 
+/* Desktop layout */
 @media (min-width: 640px) {
   .bannerContent {
     flex-direction: row;
+    gap: 1rem; /* ⬅ restore normal spacing */
+    padding: 5px;
   }
 }
 
@@ -41,5 +40,5 @@
 
 .couponCode {
   font-weight: 600;
-  color: #fde047; /* yellow-300 */
+  color: #fde047;
 }
