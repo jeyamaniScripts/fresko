@@ -146,7 +146,7 @@ const NavBar = () => {
           {!user ? (
             <button
               onClick={() => setShowModal(true)}
-              className="cursor-pointer px-8 py-2 text-white rounded-full"
+              className="cursor-pointer px-8 py-2 text-white "
               style={{ background: "var(--color-primary)" }}
             >
               Login
@@ -154,7 +154,7 @@ const NavBar = () => {
           ) : (
             <button
               onClick={handleLogout}
-              className="cursor-pointer px-6 py-2 border rounded-full"
+              className="cursor-pointer px-6 py-2 border "
               style={{
                 color: "var(--color-primary)",
                 borderColor: "var(--color-primary)",
@@ -284,8 +284,8 @@ const NavBar = () => {
               className={styles.logoutBtn}
               style={{
                 borderColor: "var(--color-primary)",
-                color: "var(--color-primary)",
               }}
+              // className
               onClick={handleLogout}
             >
               Logout
