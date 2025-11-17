@@ -1,8 +1,9 @@
-@import "tailwindcss";
-@import "../assets/theme.css"; /* Correct path */
-
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap");
+
+/* theme MUST come first */
+@import "tailwindcss";
+@import "./theme.css";
 
 body {
   @apply bg-white text-gray-800;
@@ -21,9 +22,11 @@ h6 {
 html {
   scroll-behavior: smooth;
 }
+
 input {
   font-family: inherit;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

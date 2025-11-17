@@ -59,6 +59,7 @@ const NavBar = () => {
         setFade(true);
       }, 250);
     }, 2500);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -82,7 +83,7 @@ const NavBar = () => {
           <img src={logo} alt="Logo" className="w-32 md:w-36 lg:w-40" />
         </Link>
 
-        {/* Desktop Right Section */}
+        {/* DESKTOP */}
         <div className="hidden sm:flex items-center gap-8 w-full justify-end">
           {/* SEARCH */}
           <div className={styles.searchBox}>
@@ -103,18 +104,23 @@ const NavBar = () => {
               </div>
             )}
 
-            <FiSearch className={styles.searchIcon} />
+            <FiSearch
+              className={styles.searchIcon}
+              style={{ color: "var(--color-primary)" }}
+            />
           </div>
 
           {user?.role === "admin" && (
             <Link
               to="/admin/dashboard"
-              className="text-green-600 font-medium hover:underline"
+              className="font-medium hover:underline"
+              style={{ color: "var(--color-primary)" }}
             >
               Dashboard
             </Link>
           )}
 
+          {/* CART */}
           <div className="relative cursor-pointer">
             <Link to="/product/addtocart">
               <svg
@@ -123,7 +129,7 @@ const NavBar = () => {
                 width="22"
                 height="22"
                 fill="none"
-                stroke="#22c55e"
+                stroke="var(--color-primary)"
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -133,24 +139,32 @@ const NavBar = () => {
                 <path d="M1 1h4l3.6 12.59a2 2 0 0 0 2 1.41h9a2 2 0 0 0 2-1.61L23 6H6" />
               </svg>
             </Link>
-            {cartCount > 0 && (
-              <span className="absolute -top-2 -right-3 text-xs text-white bg-green-500 w-[18px] h-[18px] rounded-full flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
+
+            <span
+              className="absolute -top-2 -right-3 text-xs text-white w-[18px] h-[18px] rounded-full flex items-center justify-center"
+              style={{ backgroundColor: "var(--color-primary)" }}
+            >
+              {cartCount}
+            </span>
           </div>
 
+          {/* LOGIN / LOGOUT */}
           {!user ? (
             <button
               onClick={() => setShowModal(true)}
-              className="cursor-pointer px-8 py-2 bg-green-500 text-white rounded-full"
+              className="cursor-pointer px-8 py-2 text-white rounded-full"
+              style={{ backgroundColor: "var(--color-primary)" }}
             >
               Login
             </button>
           ) : (
             <button
               onClick={handleLogout}
-              className="cursor-pointer px-6 py-2 border border-green-500 text-green-600 rounded-full"
+              className="cursor-pointer px-6 py-2 border rounded-full"
+              style={{
+                color: "var(--color-primary)",
+                borderColor: "var(--color-primary)",
+              }}
             >
               Logout
             </button>
@@ -159,7 +173,7 @@ const NavBar = () => {
 
         {/* MOBILE MENU BUTTON */}
         <button className="sm:hidden" onClick={() => setOpen(true)}>
-          <FiMenu size={24} color="#16a34a" />
+          <FiMenu size={24} style={{ color: "var(--color-primary)" }} />
         </button>
       </nav>
 
@@ -179,11 +193,15 @@ const NavBar = () => {
       >
         <div className={styles.menuHeader}>
           <img src={logo} alt="Logo" className="w-28" />
-          <FiX size={26} onClick={() => setOpen(false)} />
+          <FiX
+            size={26}
+            style={{ color: "var(--color-primary)" }}
+            onClick={() => setOpen(false)}
+          />
         </div>
 
         <div className={styles.menuLinks}>
-          {user ? <p className={styles.userName}>👋 {user.name}</p> : null}
+          {user && <p className={styles.userName}>👋 {user.name}</p>}
 
           <Link to="/" onClick={() => setOpen(false)}>
             Home
@@ -201,22 +219,34 @@ const NavBar = () => {
 
           {!user ? (
             <button
+              className={styles.loginBtn}
+              style={{
+                backgroundColor: "var(--color-primary)",
+                color: "white",
+              }}
               onClick={() => {
                 setOpen(false);
                 setShowModal(true);
               }}
-              className={styles.loginBtn}
             >
               Login
             </button>
           ) : (
-            <button onClick={handleLogout} className={styles.logoutBtn}>
+            <button
+              className={styles.logoutBtn}
+              style={{
+                borderColor: "var(--color-primary)",
+                color: "var(--color-primary)",
+              }}
+              onClick={handleLogout}
+            >
               Logout
             </button>
           )}
         </div>
       </div>
 
+      {/* POPUP MODAL */}
       {showModal && (
         <PopupModal
           onCancel={() => setShowModal(false)}
