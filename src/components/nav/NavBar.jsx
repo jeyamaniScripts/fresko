@@ -4,7 +4,23 @@ import logo from "../../assets/logo/logo.png";
 import PopupModal from "../PopupModal";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../provider/CartContext";
-import { FiSearch, FiX, FiMenu } from "react-icons/fi";
+
+import {
+  FiSearch,
+  FiX,
+  FiMenu,
+  FiHome,
+  FiShoppingCart,
+  FiGrid,
+  FiUser,
+  FiHeart,
+  FiPackage,
+  FiHelpCircle,
+  FiTag,
+  FiMapPin,
+  FiLogIn,
+  FiSettings,
+} from "react-icons/fi";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -38,11 +54,8 @@ const NavBar = () => {
   const [fade, setFade] = useState(true);
   const [searchValue, setSearchValue] = useState("");
 
-  // ⭐ Debounced Search
   const handleSearch = useCallback(() => {
-    if (searchValue.trim()) {
-      console.log("Searching for:", searchValue);
-    }
+    if (searchValue.trim()) console.log("Searching:", searchValue);
   }, [searchValue]);
 
   useEffect(() => {
@@ -50,7 +63,6 @@ const NavBar = () => {
     return () => clearTimeout(timer);
   }, [searchValue, handleSearch]);
 
-  // Animated placeholder text
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
@@ -59,7 +71,6 @@ const NavBar = () => {
         setFade(true);
       }, 250);
     }, 2500);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -71,7 +82,7 @@ const NavBar = () => {
 
   return (
     <>
-      {/* NAVBAR */}
+      {/* ------------------- NAVBAR ------------------- */}
       <nav
         className={`fixed top-0 left-0 w-full z-[100] flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 h-[72px] border-b transition-all ${
           isScrolled
@@ -79,7 +90,7 @@ const NavBar = () => {
             : "bg-transparent border-transparent"
         }`}
       >
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/">
           <img src={logo} alt="Logo" className="w-32 md:w-36 lg:w-40" />
         </Link>
 
@@ -89,11 +100,10 @@ const NavBar = () => {
           <div className={styles.searchBox}>
             <input
               type="text"
+              className={styles.searchInput}
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              className={styles.searchInput}
             />
-
             {searchValue.length === 0 && (
               <div
                 className={`${styles.suggestionText} ${
@@ -103,43 +113,27 @@ const NavBar = () => {
                 Search for "{suggestions[index]}"
               </div>
             )}
-
-            <FiSearch
-              className={styles.searchIcon}
-              style={{ color: "var(--color-primary)" }}
-            />
+            <FiSearch className={styles.searchIcon} />
           </div>
 
           {user?.role === "admin" && (
             <Link
               to="/admin/dashboard"
-              className="font-medium hover:underline"
+              className="font-medium"
               style={{ color: "var(--color-primary)" }}
             >
-              Dashboard
+              Admin
             </Link>
           )}
 
           {/* CART */}
           <div className="relative cursor-pointer">
             <Link to="/product/addtocart">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="22"
-                height="22"
-                fill="none"
-                stroke="var(--color-primary)"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l3.6 12.59a2 2 0 0 0 2 1.41h9a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
+              <FiShoppingCart
+                size={22}
+                style={{ color: "var(--color-primary)" }}
+              />
             </Link>
-
             <span
               className="absolute -top-2 -right-3 text-xs text-white w-[18px] h-[18px] rounded-full flex items-center justify-center"
               style={{ backgroundColor: "var(--color-primary)" }}
@@ -153,7 +147,7 @@ const NavBar = () => {
             <button
               onClick={() => setShowModal(true)}
               className="cursor-pointer px-8 py-2 text-white rounded-full"
-              style={{ backgroundColor: "var(--color-primary)" }}
+              style={{ background: "var(--color-primary)" }}
             >
               Login
             </button>
@@ -177,60 +171,114 @@ const NavBar = () => {
         </button>
       </nav>
 
-      {/* SPACER */}
       <div className="h-[72px]" />
 
-      {/* MOBILE OVERLAY */}
+      {/* overlay */}
       {open && (
         <div className={styles.overlay} onClick={() => setOpen(false)}></div>
       )}
 
-      {/* MOBILE SLIDE-IN MENU */}
+      {/* ------------------- MOBILE MENU ------------------- */}
       <div
         className={`${styles.mobileMenu} ${
           open ? styles.menuOpen : styles.menuClose
         }`}
       >
         <div className={styles.menuHeader}>
-          <img src={logo} alt="Logo" className="w-28" />
-          <FiX
-            size={26}
-            style={{ color: "var(--color-primary)" }}
-            onClick={() => setOpen(false)}
-          />
+          <img src={logo} alt="Logo" className="w-24" />
+          <div className={styles.iconBox} onClick={() => setOpen(false)}>
+            <FiX size={18} style={{ color: "var(--color-primary)" }} />
+          </div>
         </div>
 
         <div className={styles.menuLinks}>
           {user && <p className={styles.userName}>👋 {user.name}</p>}
 
-          <Link to="/" onClick={() => setOpen(false)}>
-            Home
+          <Link
+            className={styles.menuItem}
+            to="/"
+            onClick={() => setOpen(false)}
+          >
+            <FiHome className={styles.menuIcon} /> Home
           </Link>
 
-          <Link to="/product/addtocart" onClick={() => setOpen(false)}>
-            Cart ({cartCount})
+          <Link
+            className={styles.menuItem}
+            to="/product/addtocart"
+            onClick={() => setOpen(false)}
+          >
+            <FiShoppingCart className={styles.menuIcon} /> Cart
+            <span className={styles.cartBadge}>{cartCount}</span>
+          </Link>
+
+          <Link
+            className={styles.menuItem}
+            to="/orders"
+            onClick={() => setOpen(false)}
+          >
+            <FiPackage className={styles.menuIcon} /> My Orders
+          </Link>
+
+          <Link
+            className={styles.menuItem}
+            to="/wishlist"
+            onClick={() => setOpen(false)}
+          >
+            <FiHeart className={styles.menuIcon} /> Wishlist
+          </Link>
+
+          <Link
+            className={styles.menuItem}
+            to="/track"
+            onClick={() => setOpen(false)}
+          >
+            <FiMapPin className={styles.menuIcon} /> Track Order
+          </Link>
+
+          <Link
+            className={styles.menuItem}
+            to="/account"
+            onClick={() => setOpen(false)}
+          >
+            <FiUser className={styles.menuIcon} /> My Account
+          </Link>
+
+          <Link
+            className={styles.menuItem}
+            to="/offers"
+            onClick={() => setOpen(false)}
+          >
+            <FiTag className={styles.menuIcon} /> Offers
+          </Link>
+
+          <Link
+            className={styles.menuItem}
+            to="/support"
+            onClick={() => setOpen(false)}
+          >
+            <FiHelpCircle className={styles.menuIcon} /> Help & Support
           </Link>
 
           {user?.role === "admin" && (
-            <Link to="/admin/dashboard" onClick={() => setOpen(false)}>
-              Admin Dashboard
+            <Link
+              className={styles.menuItem}
+              to="/admin/dashboard"
+              onClick={() => setOpen(false)}
+            >
+              <FiGrid className={styles.menuIcon} /> Admin
             </Link>
           )}
 
           {!user ? (
-            <button
-              className={styles.loginBtn}
-              style={{
-                backgroundColor: "var(--color-primary)",
-                color: "white",
-              }}
+            <Link
+              className={`${styles.menuItem} ${styles.secondaryItem}`}
               onClick={() => {
                 setOpen(false);
                 setShowModal(true);
               }}
             >
-              Login
-            </button>
+              <FiLogIn className={styles.menuIcon} /> Login
+            </Link>
           ) : (
             <button
               className={styles.logoutBtn}
@@ -244,9 +292,19 @@ const NavBar = () => {
             </button>
           )}
         </div>
+
+        {/* ⭐ SETTINGS AT BOTTOM */}
+        <div className={styles.bottomSection}>
+          <Link
+            className={styles.menuItem}
+            to="/settings"
+            onClick={() => setOpen(false)}
+          >
+            <FiSettings className={styles.menuIcon} /> Settings
+          </Link>
+        </div>
       </div>
 
-      {/* POPUP MODAL */}
       {showModal && (
         <PopupModal
           onCancel={() => setShowModal(false)}
