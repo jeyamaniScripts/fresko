@@ -1,150 +1,153 @@
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: #fff;
+/* ===========================
+   DESKTOP SEARCH BAR
+   =========================== */
+.searchBox {
   position: relative;
-  transition: all 0.3s ease;
-}
-
-.logoContainer {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.logo {
-  width: 8rem;
-  height: 3rem;
-  object-fit: contain;
-}
-
-.desktopMenu {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .desktopMenu {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    justify-content: flex-end;
-    width: 100%;
-  }
-}
-
-.searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border: 1px solid #d1d5db;
-  background: #fff;
-  border-radius: 8px;
-  height: 46px;
-  padding-left: 10px;
-  overflow: hidden;
+  height: 44px;
   width: 320px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding-left: 12px;
+  overflow: hidden;
+  z-index: 50;
 }
 
-@media (min-width: 768px) {
-  .searchContainer {
-    width: 420px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .searchContainer {
-    width: 520px;
-  }
-}
-
+/* Input field */
 .searchInput {
   width: 100%;
   height: 100%;
   border: none;
   outline: none;
-  color: #4b5563;
-  font-size: 0.9rem;
+  font-size: 14px;
+  background: transparent;
+  z-index: 20; /* ensures input stays on top */
 }
 
-.cartContainer {
-  position: relative;
-  cursor: pointer;
-}
-
-.cartBadge {
+/* Animated placeholder text */
+.suggestionText {
   position: absolute;
-  top: -6px;
-  right: -8px;
-  font-size: 0.7rem;
-  color: white;
-  background: #22c55e;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: none;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 10; /* always behind the input */
+}
+
+/* Fade animation */
+.fadeIn {
+  opacity: 1;
+  transform: translateY(-50%) translateY(0);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: translateY(-50%) translateY(-6px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+/* Search Icon (right side) */
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  color: #6b7280;
+  font-size: 18px;
+  z-index: 30;
+}
+
+
+/* ===========================
+   MOBILE OVERLAY
+   =========================== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 90;
+}
+
+
+/* ===========================
+   MOBILE SLIDE-IN MENU
+   =========================== */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
+  transition: transform 0.35s ease-in-out;
+  z-index: 999;
+}
+
+.menuOpen {
+  transform: translateX(0);
+}
+
+.menuClose {
+  transform: translateX(-100%);
+}
+
+
+/* ===========================
+   MOBILE MENU CONTENT
+   =========================== */
+.menuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuLinks {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.menuLinks a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+}
+
+.userName {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.loginBtn,
+.logoutBtn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 130px;
+  text-align: center;
 }
 
 .loginBtn {
-  cursor: pointer;
-  padding: 0.5rem 1.5rem;
-  background: linear-gradient(90deg, #16a34a, #84cc16);
-  border: none;
-  color: #fff;
-  border-radius: 9999px;
-  transition: background 0.3s ease;
-}
-
-.loginBtn:hover {
-  background: linear-gradient(90deg, #15803d, #65a30d);
-}
-
-/* Mobile */
-.mobileToggle {
-  display: block;
-}
-
-@media (min-width: 640px) {
-  .mobileToggle {
-    display: none;
-  }
-}
-
-.mobileMenu {
-  display: none;
-}
-
-.mobileMenuOpen {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 1rem;
-}
-
-.mobileMenuOpen a {
-  color: #374151;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s;
-}
-
-.mobileMenuOpen a:hover {
-  color: #16a34a;
-}
-
-.mobileLogin {
-  background: linear-gradient(90deg, #16a34a, #84cc16);
+  background: #22c55e;
   color: white;
   border: none;
-  border-radius: 9999px;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.85rem;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: 1.5px solid #ef4444;
+  color: #ef4444;
 }
