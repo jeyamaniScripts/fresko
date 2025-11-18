@@ -1,34 +1,37 @@
 import React, { useEffect, useState } from "react";
 import ProductList from "./ProductList";
+import { FiShoppingCart } from "react-icons/fi";
+import { useCart } from "../../provider/CartContext";
 
 const Products = () => {
-  const [fruitsProducts, setFruitProducts] = useState([]);
-  const [vegetableProducts, setVegtableProducts] = useState([]);
-  useEffect(() => {
-    fetch("/fruits.json")
-      .then((res) => res.json())
-      .then((data) => setFruitProducts(data));
-  }, []);
+  const [fruits, setFruits] = useState([]);
+  const [veggies, setVeggies] = useState([]);
+  const { cartItems } = useCart();
+
+  const cartCount = cartItems.reduce((a, b) => a + b.quantity, 0);
 
   useEffect(() => {
-    fetch("/vegetables.json")
-      .then((res) => res.json())
-      .then((data) => setVegtableProducts(data));
+    fetch("/fruits.json").then((res) =>
+      res.json().then((data) => setFruits(data))
+    );
+    fetch("/vegetables.json").then((res) =>
+      res.json().then((data) => setVeggies(data))
+    );
   }, []);
-
-  // console.log(fruitsProducts);
-  // console.log(vegetableProducts);
 
   return (
-    <div className="text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32">
-      <h1 class="text-3xl font-medium text-slate-800 text-center mb-2 font-poppins text-start">
-        Vegtables{" "}
+    <div className="pt-8 px-5 md:px-16 lg:px-24 xl:px-32 text-gray-700">
+      {/* Vegetables */}
+      <h1 className="text-xl md:text-2xl font-semibold mb-2 text-slate-800">
+        Fresh Vegetables for You
       </h1>
-      <ProductList products={vegetableProducts} />
-      <h1 class="text-3xl text-start font-medium text-slate-800 text-center mb-2 font-poppins">
-        Fruits
+      <ProductList products={veggies} />
+
+      {/* Fruits */}
+      <h1 className="text-xl md:text-2xl font-semibold mb-2 text-slate-800">
+        Fresh & Juicy Fruits
       </h1>
-      <ProductList products={fruitsProducts} />
+      <ProductList products={fruits} />
     </div>
   );
 };

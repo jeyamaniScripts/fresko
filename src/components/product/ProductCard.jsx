@@ -1,50 +1,66 @@
 import React from "react";
+import { FiHeart } from "react-icons/fi";
 import { useCart } from "../../provider/CartContext";
 
 const ProductCard = ({ product }) => {
   const { cartItems, addToCart, updateQuantity } = useCart();
-
   const cartItem = cartItems.find((item) => item.id === product.id);
   const count = cartItem ? cartItem.quantity : 0;
 
   return (
-    <div className="border border-gray-200 rounded-lg shadow-sm bg-white w-full max-w-[230px] p-2 hover:shadow-md transition-all duration-300">
+    <div className="w-full bg-white rounded-xl border border-gray-200 shadow-[0_2px_6px_rgba(0,0,0,0.05)] p-2 relative hover:shadow-md transition-all">
+      {/* WISHLIST ICON */}
+      <button className="absolute top-3 right-3 bg-white shadow-sm p-1.5 rounded-full">
+        <FiHeart size={16} className="text-gray-500" />
+      </button>
+
+      {/* IMAGE */}
       <img
         src={product.image}
         alt={product.name}
-        className="h-48 w-full object-cover rounded-md"
+        className="w-full h-32 sm:h-40 object-cover rounded-lg"
       />
-      <p className="text-base font-semibold mt-3 text-gray-800">
-        {product.name}
-      </p>
 
-      <div className="flex items-end justify-between mt-3">
-        <p className="text-lg font-semibold text-green-600">
-          ${product.offerPrice}
-          <span className="text-gray-400 line-through text-sm ml-1">
-            ${product.price}
-          </span>
+      <div className="flex justify-between">
+        {/* NAME */}
+        <p className="text-sm font-semibold mt-2 text-gray-800">
+          {product.name}
         </p>
 
+        {/* PRICE */}
+        <div className="mt-1">
+          <span className="text-green-600 font-bold text-[15px]">
+            ₹{product.offerPrice}
+          </span>
+          <span className="line-through text-gray-400 text-[12px] ml-1">
+            ₹{product.price}
+          </span>
+        </div>
+      </div>
+
+      {/* ADD BUTTON / COUNTER */}
+      <div className="mt-2">
         {count === 0 ? (
           <button
-            className="bg-green-100 border border-green-300 px-3 py-1.5 rounded-md text-green-600 font-medium hover:bg-green-200 transition"
+            className="w-full bg-green-100 text-green-600 font-semibold py-1 rounded-md border border-green-300 text-sm"
             onClick={() => addToCart(product)}
           >
             Add
           </button>
         ) : (
-          <div className="flex items-center bg-green-500/20 rounded-md">
+          <div className="flex items-center justify-between bg-green-100 border border-green-300 rounded-md py-1 px-2">
             <button
               onClick={() => updateQuantity(product.id, Math.max(count - 1, 0))}
-              className="px-2 text-lg font-semibold text-green-700"
+              className="text-green-600 text-lg"
             >
               -
             </button>
-            <span className="w-6 text-center text-green-800">{count}</span>
+
+            <span className="text-green-700 font-semibold">{count}</span>
+
             <button
               onClick={() => updateQuantity(product.id, count + 1)}
-              className="px-2 text-lg font-semibold text-green-700"
+              className="text-green-600 text-lg"
             >
               +
             </button>
