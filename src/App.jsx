@@ -10,11 +10,13 @@ import Banner from "./components/Banner";
 import ProductDetail from "./components/product/ProductDetail";
 import AdminDashboard from "./components/dashbord/AdminDashboard";
 import ProtectedRoute from "./components/dashbord/ProductedRoute";
+import PromoCards from "./components/PromoCards";
 const App = () => {
   return (
     <>
       <NavBar />
       <Banner />
+      <PromoCards />
       <Routes>
         <Route path="/" element={<Home />}>
           <Route index element={<Products />} />

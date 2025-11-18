@@ -1,0 +1,70 @@
+.wrapper {
+  max-width: 1280px;
+  margin: 20px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px;
+  border-radius: 14px;
+  color: #1f2937;
+  background: #e5e7eb;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.card button {
+  margin-top: 12px;
+  background: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.card img {
+  width: 120px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .card img {
+    width: 80px;
+  }
+}
+
+/* Custom pastel theme colors */
+:root {
+  --green-light: #d9f99d;
+  --yellow-light: #fef9c3;
+  --blue-light: #bfdbfe;
+}
