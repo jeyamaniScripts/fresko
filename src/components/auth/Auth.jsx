@@ -19,7 +19,7 @@ const Auth = () => {
       {/* LOGIN */}
       {mode === "login" && (
         <>
-          <h2 className={styles.title}>Welcome back</h2>
+          <h2 className={styles.title}>Fresko awaits you!</h2>
 
           <form>
             {/* EMAIL */}
@@ -94,7 +94,7 @@ const Auth = () => {
       {/* SIGNUP */}
       {mode === "signup" && (
         <>
-          <h2 className={styles.title}>Create Account</h2>
+          <h2 className={styles.title}>Join us today</h2>
 
           <form>
             <div className={styles.inputGroup}>
