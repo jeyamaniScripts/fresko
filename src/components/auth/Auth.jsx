@@ -1,126 +1,180 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
+import {
+  FiMail,
+  FiUser,
+  FiPhone,
+  FiLock,
+  FiEye,
+  FiEyeOff,
+} from "react-icons/fi";
 
 const Auth = () => {
-  const [isSignup, setIsSignup] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (isSignup) {
-      const name = e.target.name.value;
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      const confirm = e.target.confirm.value;
-
-      if (password !== confirm) {
-        alert("Passwords do not match!");
-        return;
-      }
-
-      // ✅ Store signup data and set login state
-      const newUser = { name, email, password, role: "admin" };
-      localStorage.setItem("user", JSON.stringify(newUser));
-      localStorage.setItem("isLoggedIn", "true");
-
-      alert("Signup successful! Welcome, " + name);
-      window.location.reload(); // refresh to update Navbar state
-    } else {
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-
-      if (storedUser && storedUser.email === email && storedUser.password === password) {
-        // ✅ Store login state
-        localStorage.setItem("isLoggedIn", "true");
-        alert(`Welcome back, ${storedUser.name}!`);
-        window.location.reload(); // refresh to update Navbar state
-      } else {
-        alert("Invalid credentials!");
-      }
-    }
-  };
+  const [mode, setMode] = useState("login");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
 
   return (
-    <>
-      <h2 className={styles.title}>
-        {isSignup ? "Create your account" : "Welcome back"}
-      </h2>
+    <div className={styles.authWrapper}>
+      {/* LOGIN */}
+      {mode === "login" && (
+        <>
+          <h2 className={styles.title}>Welcome back</h2>
 
-      <form onSubmit={handleSubmit}>
-        {isSignup && (
-          <input
-            name="name"
-            className={styles.input}
-            type="text"
-            placeholder="Enter your name"
-            required
-          />
-        )}
+          <form>
+            {/* EMAIL */}
+            <div className={styles.inputGroup}>
+              <FiMail className={styles.inputIcon} />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className={styles.inputField}
+                required
+              />
+            </div>
 
-        <input
-          name="email"
-          className={styles.input}
-          type="email"
-          placeholder="Enter your email"
-          required
-        />
+            {/* PASSWORD */}
+            <div className={styles.inputGroup}>
+              <FiLock className={styles.inputIcon} />
 
-        <input
-          name="password"
-          className={styles.input}
-          type="password"
-          placeholder="Enter your password"
-          required
-        />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                className={styles.inputField}
+                required
+              />
 
-        {isSignup && (
-          <input
-            name="confirm"
-            className={styles.input}
-            type="password"
-            placeholder="Confirm your password"
-            required
-          />
-        )}
+              <span
+                className={styles.eyeIcon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </span>
+            </div>
 
-        {!isSignup && (
-          <div className={styles.forgot}>
-            <a href="#">Forgot Password?</a>
-          </div>
-        )}
+            <div className={styles.forgotLink}>
+              <a className="text-blue-600 underline text-sm" href="#">
+                Forgot Password?
+              </a>
+            </div>
 
-        <button type="submit" className={styles.submit}>
-          {isSignup ? "Sign up" : "Log in"}
-        </button>
-      </form>
-
-      <p className={styles.toggle}>
-        {isSignup ? (
-          <>
-            Already have an account?{" "}
-            <button
-              type="button"
-              onClick={() => setIsSignup(false)}
-              className={styles.link}
-            >
+            {/* LOGIN BUTTON */}
+            <button type="submit" className={styles.primaryBtn}>
               Log in
             </button>
-          </>
-        ) : (
-          <>
+          </form>
+
+          <p className={styles.textCenter}>
             Don’t have an account?{" "}
-            <button
-              type="button"
-              onClick={() => setIsSignup(true)}
-              className={styles.link}
-            >
-              Sign up
+            <span className={styles.altLink} onClick={() => setMode("signup")}>
+              Signup
+            </span>
+          </p>
+
+          {/* APPLE */}
+          <button type="button" className={styles.appleBtn}>
+            <img
+              className="h-4 w-4"
+              src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/appleLogo.png"
+            />
+            Log in with Apple
+          </button>
+
+          {/* GOOGLE */}
+          <button type="button" className={styles.googleBtn}>
+            <img
+              className="h-4 w-4"
+              src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleFavicon.png"
+            />
+            Log in with Google
+          </button>
+        </>
+      )}
+
+      {/* SIGNUP */}
+      {mode === "signup" && (
+        <>
+          <h2 className={styles.title}>Create Account</h2>
+
+          <form>
+            <div className={styles.inputGroup}>
+              <FiUser className={styles.inputIcon} />
+              <input
+                type="text"
+                placeholder="Full Name"
+                className={styles.inputField}
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <FiMail className={styles.inputIcon} />
+              <input
+                type="email"
+                placeholder="Email Address"
+                className={styles.inputField}
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <FiPhone className={styles.inputIcon} />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className={styles.inputField}
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <FiLock className={styles.inputIcon} />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                className={styles.inputField}
+                required
+              />
+
+              <span
+                className={styles.eyeIcon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FiEyeOff /> : <FiEye />}
+              </span>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <FiLock className={styles.inputIcon} />
+              <input
+                type={showCPassword ? "text" : "password"}
+                placeholder="Confirm Password"
+                className={styles.inputField}
+                required
+              />
+              <span
+                className={styles.eyeIcon}
+                onClick={() => setShowCPassword(!showCPassword)}
+              >
+                {showCPassword ? <FiEyeOff /> : <FiEye />}
+              </span>
+            </div>
+
+            <button type="submit" className={styles.primaryBtn}>
+              Create Account
             </button>
-          </>
-        )}
-      </p>
-    </>
+          </form>
+
+          <p className={styles.textCenter}>
+            Already have an account?{" "}
+            <span className={styles.altLink} onClick={() => setMode("login")}>
+              Login
+            </span>
+          </p>
+        </>
+      )}
+    </div>
   );
 };
 
