@@ -1,0 +1,107 @@
+.container {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.subtext {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.75rem;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+/* CARD BOX */
+.card {
+  width: 20rem;
+  padding: 1.75rem;
+  border-radius: 0.75rem;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* COLOR THEMES */
+.greenCard {
+  background: #d1fae5;
+  border-color: #a7f3d0;
+}
+
+.yellowCard {
+  background: #fef9c3;
+  border-color: #fde68a;
+}
+
+.blueCard {
+  background: #dbeafe;
+  border-color: #bfdbfe;
+}
+
+/* Quote Icon */
+.quoteIcon {
+  width: 40px;
+  height: 35px;
+  margin-bottom: 0.5rem;
+}
+
+/* Stars */
+.starsRow {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+}
+
+/* Review Text */
+.reviewText {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+/* User section */
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.userImage {
+  height: 48px;
+  width: 48px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.userName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.userRole {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
