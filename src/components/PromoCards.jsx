@@ -1,40 +1,32 @@
 import React from "react";
 import styles from "./PromoCards.module.css";
 
+import veges from "../assets/vegetables_no_bg.png";
+import fruts from "../assets/fruit_no_bg.png";
+import dairy from "../assets/milk_cheese_no_bg.png";
+
 const PromoCards = () => {
   return (
     <div className={styles.wrapper}>
-      {/* CARD 1 */}
-      <div className={styles.card} style={{ background: "var(--green-light)" }}>
-        <div>
-          <h2>Fresh Vegetables</h2>
-          <p>Handpicked daily from local farms.</p>
-          <button>Shop Now</button>
-        </div>
-        <img src="https://i.imgur.com/QqKX1cB.png" alt="Vegetables" />
+      <div className={styles.card} data-color="green">
+        <h2 className={styles.title}>Fresh Vegetables</h2>
+        <p className={styles.description}>Handpicked daily from local farms.</p>
+        <button className={styles.button}>Shop Now</button>
+        <img src={veges} className={styles.image} alt="veg" />
       </div>
 
-      {/* CARD 2 */}
-      <div
-        className={styles.card}
-        style={{ background: "var(--yellow-light)" }}
-      >
-        <div>
-          <h2>Fresh Fruits</h2>
-          <p>Sweet & seasonal fruits delivered fast.</p>
-          <button>Order Now</button>
-        </div>
-        <img src="/promo/fruits.png" alt="Fruits" />
+      <div className={styles.card} data-color="yellow">
+        <h2 className={styles.title}>Fresh Fruits</h2>
+        <p className={styles.description}>Seasonal fruits delivered fast.</p>
+        <button className={styles.button}>Order Now</button>
+        <img src={fruts} className={styles.image} alt="fruits" />
       </div>
 
-      {/* CARD 3 */}
-      <div className={styles.card} style={{ background: "var(--blue-light)" }}>
-        <div>
-          <h2>Dairy Essentials</h2>
-          <p>Milk, curd, butter & more in minutes.</p>
-          <button>Buy Now</button>
-        </div>
-        <img src="/promo/dairy.png" alt="Dairy" />
+      <div className={styles.card} data-color="blue">
+        <h2 className={styles.title}>Dairy Essentials</h2>
+        <p className={styles.description}>Milk, curd, butter & more.</p>
+        <button className={styles.button}>Buy Now</button>
+        <img src={dairy} className={styles.image} alt="dairy" />
       </div>
     </div>
   );
