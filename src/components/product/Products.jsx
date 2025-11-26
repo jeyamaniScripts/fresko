@@ -1,37 +1,64 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductList from "./ProductList";
-import { FiShoppingCart } from "react-icons/fi";
-import { useCart } from "../../provider/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchBestDiscounts,
+  fetchMostRated,
+  fetchTopSelling,
+  fetchTrending,
+  fetchByCategory,
+} from "../../redux/features/product/productSlice";
 
 const Products = () => {
-  const [fruits, setFruits] = useState([]);
-  const [veggies, setVeggies] = useState([]);
-  const { cartItems } = useCart();
+  const dispatch = useDispatch();
 
-  const cartCount = cartItems.reduce((a, b) => a + b.quantity, 0);
+  const {
+    topSelling,
+    mostRated,
+    trending,
+    bestDiscounts,
+    categoryProducts,
+    loading,
+    error,
+  } = useSelector((state) => state.products);
 
   useEffect(() => {
-    fetch("/fruits.json").then((res) =>
-      res.json().then((data) => setFruits(data))
-    );
-    fetch("/vegetables.json").then((res) =>
-      res.json().then((data) => setVeggies(data))
-    );
-  }, []);
+    dispatch(fetchTopSelling());
+    dispatch(fetchMostRated());
+    dispatch(fetchTrending());
+    dispatch(fetchBestDiscounts());
+    dispatch(fetchByCategory("veg")); // example category (you can change later)
+  }, [dispatch]);
+
+  if (loading) return <p className="text-center pt-10">Loading...</p>;
+  if (error) return <p className="text-center text-red-500 pt-10">{error}</p>;
 
   return (
     <div className="pt-8 px-5 md:px-16 lg:px-24 xl:px-32 text-gray-700">
-      {/* Vegetables */}
+      {/* Top Selling */}
       <h1 className="text-xl md:text-2xl font-semibold mb-2 text-slate-800">
-        Fresh Vegetables for You
+        Top Selling Products
       </h1>
-      <ProductList products={veggies} />
+      <ProductList products={topSelling} />
 
-      {/* Fruits */}
-      <h1 className="text-xl md:text-2xl mt-4 font-semibold mb-2 text-slate-800">
-        Fresh & Juicy Fruits
+      {/* Most Rated */}
+      <h1 className="text-xl md:text-2xl mt-6 font-semibold mb-2 text-slate-800">
+        Most Rated Products
       </h1>
-      <ProductList products={fruits} />
+      <ProductList products={mostRated} />
+
+      {/* Trending */}
+      <h1 className="text-xl md:text-2xl mt-6 font-semibold mb-2 text-slate-800">
+        Trending Now
+      </h1>
+      <ProductList products={trending} />
+
+      {/* Best Discounts */}
+      <h1 className="text-xl md:text-2xl mt-6 font-semibold mb-2 text-slate-800">
+        Best Discounts
+      </h1>
+      <ProductList products={bestDiscounts} />
+      <ProductList products={categoryProducts} />
     </div>
   );
 };
