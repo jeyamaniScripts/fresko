@@ -11,6 +11,7 @@ import ProductDetail from "./components/product/ProductDetail";
 import AdminDashboard from "./components/dashbord/AdminDashboard";
 import ProtectedRoute from "./components/dashbord/ProductedRoute";
 import PromoCards from "./components/PromoCards";
+import Testimonial from "./components/Testimonial";
 const App = () => {
   return (
     <>
@@ -33,6 +34,7 @@ const App = () => {
           />
         </Route>
       </Routes>
+      <Testimonial />
       <Footer />
     </>
   );
