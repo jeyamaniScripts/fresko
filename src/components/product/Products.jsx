@@ -28,7 +28,7 @@ const Products = () => {
       <ProductList products={veggies} />
 
       {/* Fruits */}
-      <h1 className="text-xl md:text-2xl font-semibold mb-2 text-slate-800">
+      <h1 className="text-xl md:text-2xl mt-4 font-semibold mb-2 text-slate-800">
         Fresh & Juicy Fruits
       </h1>
       <ProductList products={fruits} />

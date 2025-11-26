@@ -11,6 +11,7 @@ const PopupModal = ({ onCancel, onConfirm }) => {
           &times;
         </button>
         <Auth />
+        {/* <LoginRegister /> */}
       </div>
     </div>
   );
